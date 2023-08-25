@@ -4,7 +4,7 @@ const axiosInstance = axios.create({
     baseURL: "https://fakestoreapi.com",
 });
 
-axiosInstance.interceptors.request.use((response) => response,
+axiosInstance.interceptors.response.use((response) => response,
  (err) => Promise.reject("Something went wrong")
 )
 

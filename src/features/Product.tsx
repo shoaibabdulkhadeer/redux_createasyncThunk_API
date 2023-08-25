@@ -1,12 +1,13 @@
+import userapi from "../axios.config"
+
 const { createSlice, createAsyncThunk } = require('@reduxjs/toolkit');
 
 // Thunks
 export const fetchProducts = createAsyncThunk('products/fetch', async () => {
-    const res = await fetch('https://fakestoreapi.com/products');
-    const data = await res.json();
-    return data;
+    const productaApi = await userapi.get('/products');
+    const response = productaApi
+    return response.data
 });
-
 
 export const STATUSES = Object.freeze({
     IDLE: 'idle',

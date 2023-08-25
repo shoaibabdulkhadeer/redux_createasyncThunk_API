@@ -10,7 +10,7 @@ export const cartslice = createSlice({
         addItem:(state,action) => {
             state.push(action.payload)
         },
-        fliterData:(state,action) => {
+        filterData:(state,action) => {
             return state.filter((user)=> user.id !== action.payload)
         }
     }

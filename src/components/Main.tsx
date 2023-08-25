@@ -4,21 +4,27 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { addItem } from '../features/cartSlice';
 import { useDispatch } from 'react-redux';
-import { fetchProducts } from '../features/Product';
+import { STATUSES, fetchProducts } from '../features/Product';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 
 const Main = () => {
 
-    const [items,setItems] = useState([])
-
     const products:any = useSelector<any>(state => state.product.data)
-   
+    const productsStatus:any = useSelector<any>(state => state.product.status)
+    console.log(productsStatus)
     const Dispatch = useDispatch()
 
 
     const addhandlechange = (item:any) => {
           Dispatch(addItem(item));
+    }
+
+    if (productsStatus === STATUSES.LOADING) {
+  return <h3>😎Loading Products...</h3>
+    }
+    if (productsStatus === STATUSES.ERROR) {
+  return <h1>❌❌something went wrong💀</h1>
     }
 
     return (
