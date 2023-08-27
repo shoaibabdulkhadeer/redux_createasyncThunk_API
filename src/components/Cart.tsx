@@ -15,9 +15,8 @@ const Cart = () => {
      }
 
   return (
-    
     <div>
- <Container className='py-3 d-flex flex-wrap  align-items-center'>
+ <Container className='py-3 d-flex flex-wrap align-items-center'>
  {cart.map((item:any) => {
                 return (
                     <Card style={{ width: '14rem' }} className='m-1 itemcard'>

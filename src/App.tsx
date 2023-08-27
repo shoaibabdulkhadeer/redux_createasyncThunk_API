@@ -12,7 +12,6 @@ import { useDispatch } from "react-redux";
 import { fetchProducts } from "./features/Product";
 
 
-
 function App() {
 
   const Dispatch = useDispatch()
