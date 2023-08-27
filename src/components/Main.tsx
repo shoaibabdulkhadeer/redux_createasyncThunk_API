@@ -16,20 +16,21 @@ const Main = () => {
   const Dispatch = useDispatch();
 
   if (productsStatus === STATUSES.LOADING) {
+  
     // Show loading skeleton for each product item
     const skeletonItems = Array.from({ length:15 }).map((_, index) => (
         
-      <Card className="user m-2 itemcard" key={`skeleton-${index}`}>
+      <Card className="user m-2 p-4  loadingcard Card" key={`skeleton-${index}`}>
         <div className="user-avatar">
           <Card.Img className="skeleton-block skeleton-effect-wave" />
         </div>
         <Card.Body>
           <div className="user-name">
+            <span className="skeleton-text skeleton-effect-fade">Loading.........</span>
+            <br />
             <span className="skeleton-text skeleton-effect-fade">Loading......</span>
             <br />
             <span className="skeleton-text skeleton-effect-fade">Loading....</span>
-            <br />
-            <span className="skeleton-text skeleton-effect-fade">Loading...</span>
           </div>
         </Card.Body>
       </Card>
@@ -37,6 +38,7 @@ const Main = () => {
 
     return (
       <Container className="py-3 d-flex flex-wrap justify-content-center align-items-center">
+
         {skeletonItems}
       </Container>
     );
@@ -47,39 +49,43 @@ const Main = () => {
   }
 
   return (
-    <Container className="py-3 d-flex flex-wrap justify-content-center align-items-center">
-      {products.map((item: any) => {
-        // comparision
-        let isItemInCart = cart.some((x: any) => x.id === item.id);
+    <Container className="py-3 ">
+  <div className="card-container">
+    {products.map((item: any) => {
+      // Comparison
+      let isItemInCart = cart.some((x: any) => x.id === item.id);
 
-        const addhandlechange = (item: any) => {
+      const addhandlechange = (item: any) => {
+        Dispatch(addItem(item));
+      };
 
-        //   if (isItemInCart) {
-        //     alert('Item is already in the cart.');
-        //   } else {
-            Dispatch(addItem(item));
-        //   }
-        };
+      return (
+        <Card key={item.id} className="p-2 Card">
+          <Card.Img variant="top" src={item.image} className="imgitem" />
+          <Card.Body>
+            <Card.Text><b>{item.title}</b></Card.Text>
+            <Card.Text>
+              Price ${item.price}
+            </Card.Text>
+          </Card.Body>
+          
+          <div className="d-flex justify-content-center">
+            <Button
+            
+              variant={isItemInCart? "success":"primary"}
+              onClick={() => addhandlechange(item)}
+              disabled={isItemInCart}
+            >
+              {isItemInCart ? "Item Added" : "Add Item"}
+            </Button>
+          </div>
+        </Card>
+      );
+    })}
+  </div>
+</Container>
 
-        return (
-          <Card style={{ width: '14rem' }} className="m-1 itemcard" key={item.id}>
-            <Card.Img variant="top" src={item.image} className="imgitem" />
-            <Card.Body>
-              <Card.Title>{item.title}</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-              </Card.Text>
-              
-                <Button variant="primary" onClick={() => addhandlechange(item)} disabled={isItemInCart}>
-                  Add to cart
-                </Button>
-              
-            </Card.Body>
-          </Card>
-        );
-      })}
-    </Container>
+  
   );
 };
 

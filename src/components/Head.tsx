@@ -14,9 +14,9 @@ const Head = () => {
 
   return (
     <div>
-         <Navbar expand="lg" className="bg-body-tertiary">
+         <Navbar expand="lg" className="bg-body-tertiary mainnav ">
       <Container>
-        <Navbar.Brand >React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand >STORE APP😎</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
