@@ -21,10 +21,10 @@ const Head = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link>
-            <Link to='/'>Home</Link>
+            <Link to='/' className="links">Home</Link>
               </Nav.Link>
             <Nav.Link >
-              <Link to='/cart'>Cart {cartLength.length}</Link>
+              <Link to='/cart' className="links">Cart 🛒 <span>{cartLength.length}</span></Link>
               </Nav.Link> 
            
           </Nav>
