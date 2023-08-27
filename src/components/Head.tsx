@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';  
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Badge from 'react-bootstrap/Badge';
 
 
 
@@ -24,7 +25,11 @@ const Head = () => {
             <Link to='/' className="links">Home</Link>
               </Nav.Link>
             <Nav.Link >
-              <Link to='/cart' className="links">Cart 🛒 <span>{cartLength.length}</span></Link>
+              <Link to='/cart' className="links">
+              <Badge pill bg="warning" text="dark" className="px-3">
+              Cart 🛒 {cartLength.length}
+         </Badge>
+              </Link>
               </Nav.Link> 
            
           </Nav>
