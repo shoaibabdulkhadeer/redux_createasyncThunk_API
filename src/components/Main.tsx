@@ -38,7 +38,6 @@ const Main = () => {
 
     return (
       <Container className="py-3 d-flex flex-wrap justify-content-center align-items-center">
-
         {skeletonItems}
       </Container>
     );
@@ -67,6 +66,9 @@ const Main = () => {
             <Card.Text>
               Price ${item.price}
             </Card.Text>
+            <Card.Text>
+              {item.category}
+            </Card.Text>
           </Card.Body>
           
           <div className="d-flex justify-content-center">
@@ -76,7 +78,7 @@ const Main = () => {
               onClick={() => addhandlechange(item)}
               disabled={isItemInCart}
             >
-              {isItemInCart ? "Item Added" : "Add Item"}
+              {isItemInCart ? "Item Added" : "Add to Cart"}
             </Button>
           </div>
         </Card>

@@ -12,9 +12,16 @@ export const cartslice = createSlice({
         },
         filterData:(state,action) => {
             return state.filter((user)=> user.id !== action.payload)
-        }
+        },
+        updateCart: (state, action) => {
+            const { itemId, isItemInCart } = action.payload;
+            const itemIndex = state.findIndex((item) => item.id === itemId);
+            if (itemIndex !== -1) {
+              state[itemIndex].isItemInCart = isItemInCart;
+            }
+          }
     }
 })
 
-export const {addItem,filterData}:any = cartslice.actions
+export const {addItem,filterData,updateCart}:any = cartslice.actions
 export default cartslice.reducer
