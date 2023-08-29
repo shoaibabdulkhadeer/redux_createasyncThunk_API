@@ -2,6 +2,8 @@ import React from 'react'
 import { Button, Card, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../features/cartSlice';
+import { ToastContainer,toast } from 'react-toastify';
+
 
 
 const Womens = () => {
@@ -17,6 +19,18 @@ const Womens = () => {
   return (
 <div>
       <Container className="py-3 ">
+      <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       <h2>WOMENS CLOTHING</h2>
   <div className="card-container">
   
@@ -25,9 +39,19 @@ const Womens = () => {
       let isItemInCart = cart.some((x: any) => x.id === item.id);
 
       const addhandlechange = (item: any) => {
+        toast.success('Item Added Successfully! 😃', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
         Dispatch(addItem(item));
+  
       };
-
       return (
         <Card key={item.id} className="p-2 Card">
           <Card.Img variant="top" src={item.image} className="imgitem" />

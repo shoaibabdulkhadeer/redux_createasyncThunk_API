@@ -5,6 +5,8 @@ import { filterData } from '../features/cartSlice'
 import { useDispatch } from 'react-redux'
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import { ToastContainer,toast } from 'react-toastify';
+
 
 
 const Cart = () => {
@@ -14,13 +16,24 @@ const Cart = () => {
     const cart: any = useSelector<any>(state => state.cart)
 
     const del = (id: number) => {
+        toast.error('Item Removed Successfully!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
         Dispatch(filterData(id))
+
     }
 
-    //total price reduce array method
-    const totalPrice = cart.reduce((sum: any, x: any) => {
-        return sum = sum + x.price
-    }, 0)
+        //total price reduce array method
+        const totalPrice = cart.reduce((sum: any, x: any) => {
+            return sum = sum + x.price
+        }, 0)
 
     //   const rounded = totalPrice.toFixed(2)
 
@@ -33,11 +46,19 @@ const Cart = () => {
     return (
         <div style={{ minHeight: "100vh", marginTop: "20px", display: "flex", justifyContent: "center" }} className='container-fluid '>
             <div className="container text-center">
-
-
-
+            <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
                 <h3 className=''>All Products</h3>
-
 
                 {cart.length === 0 ? (
                     <p>Your cart is 🛒 empty</p>
@@ -47,7 +68,7 @@ const Cart = () => {
                     cart.map((x: any) => {
                         return (
 
-                            <div className="row align-items-center justify-content-center my-3 " >
+                            <div className="row align-items-center justify-content-center my-3 rowcard" >
                                 <div className="col-12 col-sm-3 col-lg-2 py-3">
                                     <img src={x.image} alt='' width={70} />
                                 </div>

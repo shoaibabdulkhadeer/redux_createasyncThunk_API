@@ -14,15 +14,12 @@ export const createProduct = createAsyncThunk('products/createProduct', async (p
       const response = await userapi.post('/products', product);
       console.log(response)
       response.data.id= Date.now()
+    //   response.data.isRecommended=true
       return response.data;
-    
   });
 
+  
 
-// export const addNewProduct = createAsyncThunk('products/addNew', async (newProduct) => {
-//     const response = await userapi.post('/api/addProduct', newProduct); 
-//     return response.data; // Assuming response.data contains the updated product list
-// });
 
 
 export const STATUSES = Object.freeze({
@@ -57,11 +54,11 @@ const productSlice = createSlice({
             .addCase(fetchProducts.rejected, (state:any, action:any) => {
                 state.status = STATUSES.ERROR;
             })
-            .addCase(createProduct.fulfilled, (state:any, action:any) => {
-                state.status = STATUSES.IDLE;       
+              .addCase(createProduct.fulfilled, (state:any, action:any) => {
+                state.status = STATUSES.IDLE;
                 state.data.unshift(action.payload);
-        
               })
+              
     },
 });
 

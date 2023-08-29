@@ -17,8 +17,8 @@ const Head = () => {
   const cartLength: any = useSelector<any>(state => state.cart)
 
   return (
-    <div>
-      <Navbar expand="lg" className="bg-body-tertiary mainnav " style={{ zIndex: 100 }}>
+    <div className='page-container'>
+      <Navbar expand="lg" className="bg-body-tertiary mainnav sticky" style={{ zIndex: 100 }}>
         <Container>
           <Navbar.Brand >STORE APP😎</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

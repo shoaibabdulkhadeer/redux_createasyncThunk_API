@@ -72,6 +72,19 @@
 }
 
 
+.rowcard:hover{
+  transition: 0.5s;
+ transform: translate(1.1) !important;
+}
+
+.mainnav {
+  position: sticky !important;
+  top: 0px !important;
+  z-index: 100;
+}
+
+
+
 
 
 
